@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<!-- Content section will be replaced by child templates -->
+{% block instruction %}
+{% endblock %}
+
+
+<p>Chuyển trang để xem tiếp</p>
+<div class="contain_search_paginate">
+
+    <ul class="pagination">
+
+        {% if paginate > 10 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('main.index',  page=paginate-10,paginate=paginate-10) }}">Trước</a>
+        </li>
+        {% endif %}
+        {% for p in range(paginate, paginate + 10) %}
+        {% if p <= total_pages%}
+
+        <li class="page-item {% if p == page %} active {% endif %}">
+            <a class="page-link" href="{{ url_for('main.index', page=p,paginate=paginate) }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if paginate < total_pages - 10 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('main.index', page=paginate+10,paginate=paginate+10) }}">Sau</a>
+        </li>
+        {% endif %}
+
+    </ul>
+
+    <div class="search-bar">
+        <form action=" {% block url_search %} {% endblock %}" method="post">
+            <input type="text" name="kw" placeholder="Nhập tên hoặc mã thiết bị để tìm kiếm">
+            <button class="btn-search" type="submit">Tìm kiếm</button>
+        </form>
+    </div>
+
+</div>
+
+{% block table %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,113 @@
+/* Cấu hình font chữ chung */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1c1c1c;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Thanh điều hướng */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar li a:hover {
+  color: #e76f51;
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto; /* Đảm bảo footer luôn ở dưới cùng */
+}
+
+footer a {
+  color: #e76f51;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Thêm kiểu cho cột QR Code */
+.device-table td {
+  vertical-align: middle;
+}
+
+.device-table .qr-container {
+  width: 50px; /* Chiều rộng mã QR */
+  height: 50px; /* Chiều cao mã QR */
+  margin: 0 auto;
+}
+
+.device-table .btn-qr {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.device-table .btn-qr:hover {
+  background-color: #264653;
+}
+
+/* Phần tài khoản người dùng */
+.user-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username {
+  color: white;
+  font-size: 16px;
+}
+
+.btn-login {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #f4a261;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm thiết bị mới</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/add_devices.css') }}">
+</head>
+<body>
+
+  <!-- Header -->
+    <header>
+    <div class="navbar">
+      <a href="#" class="logo">DEVICE MANAGEMENT</a>
+      <nav>
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="{{ url_for('main.index') }}">Quản lý thiết bị</a></li>
+          <li><a href="{{ url_for('main.repair') }}">Bảo trì</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Phần Thêm thiết bị mới -->
+  <main>
+    <div class="add-device">
+      <h2>Thêm thiết bị mới</h2>
+
+      <!-- Form nhập thông tin thiết bị mới -->
+      <form class="add-device-form" method="POST" action="{{ url_for('main.procc_add_device') }}">
+        <label for="device-name">Tên thiết bị:</label>
+        <input type="text" id="device-name" name="ten_thiet_bi" placeholder="Nhập tên thiết bị" >
+
+        <label for="device-code">Mã thiết bị:</label>
+        <input type="text" id="device-code" name="ma_tb" placeholder="Nhập mã thiết bị" >
+
+        <label for="device-manufacturer">Nước sản xuất:</label>
+        <input type="text" id="device-manufacturer" name="nsx" placeholder="Nhập nước sản xuất" >
+
+        <label for="device-model">Model:</label>
+        <input type="text" id="device-model" name="model" placeholder="Nhập model thiết bị" >
+
+        <label for="device-serial">Số hiệu:</label>
+        <input type="text" id="device-serial" name="so_hieu" placeholder="Nhập số hiệu thiết bị" >
+
+        <label for="device-year">Năm sản xuất:</label>
+        <input type="text" id="device-year" name="nam_sx" placeholder="Nhập năm sản xuất" >
+
+        <label for="device-sl">Số lượng:</label>
+        <input type="text" id="device-sl" name="sl" placeholder="Nhập số lượng thiết bị" >
+
+        <label for="device-original-price">Nguyên giá:</label>
+        <input type="text" id="device-original-price" name="nguyen_gia" placeholder="Nhập nguyên giá" >
+
+        <label for="device-remaining-value">Giá trị còn lại:</label>
+        <input type="text" id="device-remaining-value" name="gia_tri_con_lai" placeholder="Nhập giá trị còn lại" >
+
+        <label for="device-manufacturer-brand">Hãng sản xuất:</label>
+        <input type="text" id="device-manufacturer-brand" name="hang_sx" placeholder="Nhập hãng sản xuất" >
+
+        <label for="device-source">Nguồn cấp:</label>
+        <input type="text" id="device-source" name="nguon_cap" placeholder="Nhập nguồn cấp" >
+
+        <label for="device-note">Ghi chú:</label>
+        <textarea id="device-note" name="ghi_chu" placeholder="Ghi chú thêm"></textarea>
+
+        <label for="device-department">Khoa:</label>
+        <input type="text" id="device-department" name="khoa" placeholder="Nhập khoa" >
+
+        <label for="device-transfer-date">Ngày lập cho khoa:</label>
+        <input type="text" id="device-transfer-date" name="ngay_lap_cho_khoa" placeholder="Ngày lập cho khoa">
+
+        <label for="device-transfer-date-other">Ngày chuyển khoa khác:</label>
+        <input type="text" id="device-transfer-date-other" name="ngay_chuyen_khoa_khac" placeholder="Ngày chuyển khoa khác">
+
+        <button type="submit" class="btn-submit">Lưu thiết bị</button>
+      </form>
+    </div>
+  </main>
+
+
+    <footer>
+    <p>@copyright: LeandeWeb - version: 1.0 in 2025.</p>
+  </footer>
+
+</body>
+</html>

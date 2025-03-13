@@ -1,0 +1,126 @@
+
+
+/* Bảng thiết bị */
+.device-table {
+  margin: 0 20px;
+  overflow-x: auto;  /* Điều chỉnh bảng khi có tràn */
+}
+
+.device-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #333;
+}
+
+.device-table th, .device-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #444;
+}
+
+.device-table th {
+  background-color: #444;
+  color: #fff;
+}
+
+.device-table tr:hover {
+  background-color: #444;
+}
+
+.device-table .btn-detail, .device-table .btn-qr, .device-table .btn-delete , .device-table .btn-edit{
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.device-table .btn-detail{
+  background-color: #4848dd;
+}
+
+.device-table .btn-detail:hover{
+  background-color: #18187c;
+}
+
+
+ .device-table .btn-qr:hover  {
+  background-color: #264653;
+}
+
+.btn-edit {
+  background-color: #f4a261;
+  color: white;
+}
+
+.device-table .btn-edit:hover{
+  background-color: #8f5222;
+}
+
+.device-table .btn-delete {
+  background-color: #f44336;
+  height: 30px;
+}
+
+.device-table .btn-delete:hover {
+  background-color: #870808;
+}
+
+/* Nút hành động (Thêm, Sửa, Xóa) */
+.actions {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  align-items: first;
+}
+
+.actions button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add {
+  background-color: #e76f51;
+  color: white;
+}
+
+.btn-add:hover{
+   background-color: #f4a261;
+
+}
+
+/* Cải thiện cột QR Code */
+.device-table td {
+  vertical-align: middle;
+}
+
+.device-table .qr-container {
+  width: 50px; /* Chiều rộng mã QR */
+  height: 50px; /* Chiều cao mã QR */
+  margin: 0 auto;
+}
+
+.device-table .btn-qr {
+  font-size: 14px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.device-table .btn-qr:hover {
+  background-color: #264653;
+}
+
+.device-table td {
+  text-align: center; /* Căn giữa nội dung trong các ô */
+}
+

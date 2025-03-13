@@ -1,0 +1,44 @@
+.contain_search_paginate{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Tiêu đề và khu vực tìm kiếm */
+h2 {
+  color: #ffffff;
+}
+
+.search-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.search-bar .btn-search {
+  padding: 10px 20px;
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar .btn-search:hover {
+  background-color: #f4a261;
+}
+
+.page-link{
+  background-color: #656464;
+  color: white;
+}

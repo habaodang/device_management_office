@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Quản lý Thiết Bị{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/repair.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>Quản lý bảo trì thiết bị</h2>
+<h3>Chọn thiết bị để bảo trì</h3>
+
+<p>Chuyển trang để xem tiếp</p>
+<div class="contain_search_paginate">
+
+    <ul class="pagination">
+
+        {% if paginate > 10 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('main.repair',  page=paginate-10,paginate=paginate-10) }}">Trước</a>
+        </li>
+        {% endif %}
+        {% for p in range(paginate, paginate + 10) %}
+        {% if p <= total_pages%}
+
+        <li class="page-item {% if p == page %} active {% endif %}">
+            <a class="page-link" href="{{ url_for('main.repair', page=p,paginate=paginate) }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+
+        {% if paginate < total_pages - 10 %}
+        <li class="page-item">
+            <a class="page-link" href="{{ url_for('main.repair', page=paginate+10,paginate=paginate+10) }}">Sau</a>
+        </li>
+        {% endif %}
+
+    </ul>
+
+    <div class="search-bar">
+        <form action=" {{ url_for('main.repair') }}" method="post">
+            <input type="text" name="kw" placeholder="Nhập tên hoặc mã thiết bị để tìm kiếm">
+            <button class="btn-search" type="submit">Tìm kiếm</button>
+        </form>
+    </div>
+
+</div>
+
+<!-- Phần Bảo trì -->
+<div class="maintenance">
+
+
+    <!-- Tìm kiếm và chọn thiết bị -->
+    <section class="device-selection">
+
+        <table id="device-table">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên thiết bị</th>
+                <th>Mã thiết bị</th>
+                <th>Model</th>
+                <th>Khoa</th>
+                <th>Trạng thái</th>
+                <th>Bảo trì</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for device in devices %}
+            <tr>
+                <td>{{ device.stt }}</td>
+                <td>{{ device.ten_thiet_bi }}</td>
+                <td>{{ device.ma_tb }}</td>
+                <td>{{ device.model }}</td>
+                <td>{{ device.khoa }}</td>
+                {% if device.maintenance_status %}
+                <td> Đang bảo trì</td>
+                {% else %}
+                <td> -</td>
+                {% endif %}
+                <td><a href="{{ url_for('main.form_repair', stt=device.stt) }}">
+                    <button class="btn-select"> Chọn</button>
+                </a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>
+
+{% endblock %}

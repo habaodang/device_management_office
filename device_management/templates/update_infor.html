@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Quản lý Thiết Bị{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/update_infor.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Phần thông tin chi tiết thiết bị -->
+<main>
+    <div class="device-detail-container">
+        <div class="device-detail">
+            <h2>Thông tin thiết bị</h2>
+            <form method="POST" action="{{ url_for('main.update_infor') }}">
+                <div class="device-info">
+                    <div class="box">
+                        <input type="hidden" id="" name="stt" value="{{ device.stt }}">
+                        <div class="line_information">
+                            <label for="ten_thiet_bi"><strong>Tên máy:</strong></label>
+                            <input type="text" id="ten_thiet_bi" name="ten_thiet_bi" value="{{ device.ten_thiet_bi }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="ma_tb"><strong>Mã:</strong></label>
+                            <input type="text" id="ma_tb" name="ma_tb" value="{{ device.ma_tb }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="model"><strong>Model:</strong></label>
+                            <input type="text" id="model" name="model" value="{{ device.model }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="so_hieu"><strong>Số hiệu:</strong></label>
+                            <input type="text" id="so_hieu" name="so_hieu" value="{{ device.so_hieu }}">
+                        </div>
+                          <div class="line_information">
+                            <label for="nuoc_san_xuat"><strong>Nước sản xuất:</strong></label>
+                            <input type="text" id="nuoc_san_xuat" name="nuoc_san_xuat" value="{{ device.nsx }}">
+                        </div>
+                          <div class="line_information">
+                            <label for="nam_sx"><strong>Năm sản xuất:</strong></label>
+                            <input type="text" id="nam_sx" name="nam_sx" value="{{ device.nam_sx }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="nguyen_gia"><strong>Nguyên giá:</strong></label>
+                            <input type="text" id="nguyen_gia" name="nguyen_gia" value="{{ device.nguyen_gia }}">
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="line_information">
+                            <label for="hang_sx"><strong>Hãng sản xuất:</strong></label>
+                            <input type="text" id="hang_sx" name="hang_sx" value="{{ device.hang_sx }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="khoa"><strong>Khoa:</strong></label>
+                            <input type="text" id="khoa" name="khoa" value="{{ device.khoa }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="nguon_cap"><strong>Nguồn cấp:</strong></label>
+                            <input type="text" id="nguon_cap" name="nguon_cap" value="{{ device.nguon_cap }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="sl"><strong>Số lượng:</strong></label>
+                            <input type="text" id="sl" name="sl" value="{{ device.sl }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="ngay_lap_cho_khoa"><strong>Ngày lắp:</strong></label>
+                            <input type="text" id="ngay_lap_cho_khoa" name="ngay_lap_cho_khoa"
+                                   value="{{ device.ngay_lap_cho_khoa }}">
+                        </div>
+                        <div class="line_information">
+                            <label for="ghi_chu"><strong>Ghi chú:</strong></label>
+                            <input type="text" id="ghi_chu" name="ghi_chu" value="{{ device.ghi_chu }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="box_button">
+                    <button type="submit">Lưu</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</main>
+
+{% block url_search %} {{ url_for('main.index') }} {% endblock %}
+{% endblock %}

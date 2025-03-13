@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Quản lý Thiết Bị{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/repair.css') }}">
+{% endblock %}
+
+{% block content %}
+ <h2>Thiết bị đang bảo trì</h2>
+
+  <!-- Phần Bảo trì -->
+  <div class="maintenance">
+
+
+    <!-- Tìm kiếm và chọn thiết bị -->
+    <section class="device-selection">
+
+      <table id="device-table">
+        <thead>
+          <tr>
+          <th>STT</th>
+                <th>Tên thiết bị</th>
+                <th>Mã thiết bị</th>
+                <th>Model</th>
+                <th>Khoa</th>
+                <th>Trạng thái</th>
+                <th>Bảo trì</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for device in devices %}
+            <tr>
+              <td>{{ device.stt }}</td>
+                <td>{{ device.ten_thiet_bi }}</td>
+                <td>{{ device.ma_tb }}</td>
+                <td>{{ device.model }}</td>
+                <td>{{ device.khoa }}</td>
+                {% if device.maintenance_status %}
+                <td> Đang bảo trì</td>
+                {% else %}
+                <td> -</td>
+                {% endif %}
+              <td><a href="{{ url_for('main.form_repair', stt=device.stt) }}"><button class="btn-select"> Chọn</button></a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+{% endblock %}

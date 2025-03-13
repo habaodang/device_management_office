@@ -1,0 +1,79 @@
+{% extends "paginate.html" %}
+
+{% block title %}Quản lý Thiết Bị{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block instruction %}
+<h2>Bảng thiết bị</h2>
+<div class="actions">
+    <a href="{{ url_for('main.add_devices') }}">
+        <button class="btn-add">Thêm thiết bị mới</button>
+    </a>
+</div>
+{% endblock %}
+
+{% block table %}
+    <div class="device-table">
+        <div id="container-table">
+            <table id="device-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên thiết bị</th>
+                        <th>Mã thiết bị</th>
+                        <th>Model</th>
+                        <th>Hãng sản xuất</th>
+                        <th>Ngày Lắp</th>
+                        <th>Khoa</th>
+                        <th>Trạng thái</th>
+                        <th>Xem chi tiết</th>
+                        <th>Sửa thông tin</th>
+                        <th>QR Code</th> <!-- Cột QR Code -->
+                        <th>Xóa thiết bị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for device in devices %}
+                    <tr>
+                        <td>{{ device.stt }}</td>
+                        <td>{{ device.ten_thiet_bi }}</td>
+                        <td>{{ device.ma_tb }}</td>
+                        <td>{{ device.model }}</td>
+                        <td>{{ device.hang_sx }}</td>
+                        <td>{{ device.ngay_lap_cho_khoa }}</td>
+                        <td>{{ device.khoa }}</td>
+                        {% if device.maintenance_status %}
+                        <td> Đang bảo trì </td>
+                        {% else %}
+                        <td> - </td>
+                        {% endif %}
+                        <td><a href="{{ url_for('main.device_information', stt=device.stt) }}">
+                            <button class="btn-detail">Xem</button>
+                        </a></td>
+                        <td>
+                            <a href="{{ url_for('main.update_infor', stt=device.stt) }}">
+                            <button class="btn-edit">Sửa</button>
+                            </a>
+                        </td>
+                        <td> <a href="{{ url_for('main.generate_qr', stt=device.stt) }}">
+                            <button class="btn-qr" onclick="generateQRCode(1)">Tạo</button></a>
+                        </td>
+                        <td> <a href="{{ url_for('main.delete_device', stt=device.stt) }}" onclick="return confirmDelete();">
+                            <button class="btn-delete">Xóa</button>
+                        </a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xóa thiết bị này?");
+    }
+</script>
+{% endblock %}
+

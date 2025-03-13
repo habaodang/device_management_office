@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Quản lý Thiết Bị{% endblock %}
+  {% block css %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/device_information.css') }}">
+  {% endblock %}
+
+{% block content %}
+  <!-- Phần thông tin chi tiết thiết bị -->
+  <main>
+    <div class="device-detail">
+      <h2>Thông tin thiết bị</h2>
+
+      <div class="device-info">
+        <p><strong>Tên máy:</strong> {{ device.ten_thiet_bi}}</p>
+        <p><strong>Mã:</strong> {{ device.ma_tb}}</p>
+        <p><strong>Model:</strong> {{ device.model}}</p>
+        <p><strong>Số hiệu:</strong> {{ device.so_hieu}}</p>
+        <p><strong>Nước sản xuất:</strong> {{ device.nsx}}</p>
+        <p><strong>Năm sản xuất:</strong> {{ device.nam_sx}}</p>
+        <p><strong>Nguyên giá:</strong> {{ device.nguyen_gia}}</p>
+        <p><strong>Hãng sản xuất:</strong> {{ device.hang_sx}}</p>
+        <p><strong>Khoa:</strong> {{ device.khoa}}</p>
+        <p><strong>Nguồn cấp:</strong> {{ device.nguon_cap}}</p>
+        <p><strong>số lượng:</strong> {{ device.sl}}</p>
+        <p><strong>Ngày lắp:</strong> {{ device.ngay_lap_cho_khoa}}</p>
+        <p><strong>Ghi chú:</strong> {{ device.ghi_chu}}</p>
+      </div>
+
+      <!-- Nút quay lại -->
+      <button class="btn-back" onclick="window.history.back()">Quay lại</button>
+    </div>
+  </main>
+
+{% endblock %}
