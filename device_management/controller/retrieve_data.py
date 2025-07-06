@@ -1,7 +1,10 @@
+import hashlib
+
 from device_management.config import page_size
 from device_management.models import ThietBi,BaoTri
+from device_management.models import User
 from device_management import db
-from sqlalchemy import or_
+
 
 
 
@@ -145,3 +148,10 @@ def set_status_maintenance(stt):
 
 def get_device_status_maintenance():
     return ThietBi.query.filter(ThietBi.maintenance_status == True).all()
+
+def add_user(user,password,role):
+    hash_password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    new_user = User(name=user,password=hash_password,role_stt=role)
+    db.session.add(new_user)
+    db.session.commit()
+    return new_user

@@ -5,9 +5,12 @@ from device_management import db
 import device_management.config as config
 from device_management.models import ThietBi,BaoTri
 import device_management.controller.retrieve_data as ret
+import device_management.controller.login as controll_login
 from io import BytesIO
 import pandas as pd
 import qrcode
+
+import device_management.controller.admin_management as admmt
 
 main=Blueprint('main',__name__)
 
@@ -19,7 +22,7 @@ def login():
         password = request.form['password']
 
         # Kiểm tra thông tin đăng nhập (thực tế sẽ so sánh với CSDL)
-        if username == 'admin' and password == config.password:
+        if controll_login.check_login(username,password):
             return redirect(url_for('main.index'))
         else:
             flash('Tên đăng nhập hoặc mật khẩu không đúng', 'danger')
@@ -204,7 +207,7 @@ def export_excel():
             'Chuyên viên sửa chữa': record.chuyen_vien_sua_chua,
             'Ghi chú': record.ghi_chu
         })
-    print(device)
+
     name= device.ten_thiet_bi
     # Chuyển dữ liệu thành DataFrame
     df = pd.DataFrame(maintenance_data)
@@ -242,3 +245,24 @@ def generate_qr():
 
     # Trả về mã QR dưới dạng hình ảnh
     return send_file(img_io, mimetype='image/png', as_attachment=True, download_name=f"{device.ten_thiet_bi}_{device.model}.png")
+
+@main.route('/admin-management', methods=['GET', 'POST'])
+def admin_management():
+    return render_template('admin_management.html')
+
+@main.route('/admin-add-user', methods=['GET', 'POST'])
+def admin_add_user():
+    if request.method == 'POST':
+        print('in def')
+        username = request.form['user_name']
+        password = request.form['password']
+        cmpassword = request.form['cmpassword']
+
+        print(' check def')
+        check,message=admmt.create_user(username,password,cmpassword,1)
+
+        print('finished def ',message)
+        return 'ok da gui'
+    return 'dont ok'
+
+

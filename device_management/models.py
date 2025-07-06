@@ -43,3 +43,37 @@ class BaoTri(db.Model):
 
     # Mối quan hệ với bảng ThietBi
     thietbi = relationship('ThietBi', back_populates='bao_tri', lazy=True)
+
+class User(db.Model):
+    __tablename__ = 'user'
+    stt = Column(Integer, autoincrement=True, primary_key=True)
+    name=Column(String(255), nullable=False,unique=True)
+    password=Column(String(255), nullable=False)
+    role_stt = Column(Integer,ForeignKey('role.stt'), nullable=False)
+
+    role=relationship('Role', back_populates='user', lazy=True)
+
+class Role(db.Model):
+    __tablename__ = 'role'
+    stt = Column(Integer, autoincrement=True, primary_key=True)
+    name=Column(String(255), nullable=False,unique=True)
+
+ # 1 Role có nhiều User
+    user = relationship('User', back_populates='role', lazy=True)
+    role_permission = relationship('Role_Permission', back_populates='role', lazy=True)
+
+class Permission(db.Model):
+    __tablename__ = 'permission'
+    stt = Column(Integer, autoincrement=True, primary_key=True)
+    name=Column(String(255), nullable=False,unique=True)
+
+    role_permission = relationship('Role_Permission', back_populates='permission', lazy=True)
+
+class Role_Permission(db.Model):
+    __tablename__ = 'role_permission'
+    stt = Column(Integer, autoincrement=True, primary_key=True)
+    role_stt = Column(Integer,ForeignKey('role.stt'), nullable=False)
+    permission_stt = Column(Integer,ForeignKey('permission.stt'), nullable=False)
+
+    role=relationship('Role', back_populates='role_permission', lazy=True)
+    permission=relationship('Permission', back_populates='role_permission', lazy=True)
