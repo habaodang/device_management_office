@@ -6,6 +6,7 @@ import device_management.config as config
 from device_management.models import ThietBi,BaoTri
 import device_management.controller.retrieve_data as ret
 import device_management.controller.login as controll_login
+import device_management.controller.role as controll_role
 from io import BytesIO
 import pandas as pd
 import qrcode
@@ -18,12 +19,20 @@ main=Blueprint('main',__name__)
 @main.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        print('bat dau')
         username = request.form['username']
         password = request.form['password']
 
+        check,user=controll_login.check_login(username,password)
         # Kiểm tra thông tin đăng nhập (thực tế sẽ so sánh với CSDL)
-        if controll_login.check_login(username,password):
-            return redirect(url_for('main.index'))
+        print(user.role_stt)
+        if check:
+            print(controll_login.check_role(user.role_stt))
+            if controll_login.check_role(user.role_stt)  == 'admin':
+                print('bat dau dang nhap thanh cong admin')
+                return redirect(url_for('main.admin_management'))
+            else:
+                return redirect(url_for('main.index'))
         else:
             flash('Tên đăng nhập hoặc mật khẩu không đúng', 'danger')
 
@@ -246,23 +255,33 @@ def generate_qr():
     # Trả về mã QR dưới dạng hình ảnh
     return send_file(img_io, mimetype='image/png', as_attachment=True, download_name=f"{device.ten_thiet_bi}_{device.model}.png")
 
-@main.route('/admin-management', methods=['GET', 'POST'])
-def admin_management():
-    return render_template('admin_management.html')
 
+@main.route('/admin-management')
+def admin_management():
+    permissions=ret.get_permissions()
+    roles=ret.get_roles()
+    return render_template('admin_management.html',permissions=permissions,roles=roles)
 @main.route('/admin-add-user', methods=['GET', 'POST'])
 def admin_add_user():
     if request.method == 'POST':
-        print('in def')
         username = request.form['user_name']
         password = request.form['password']
         cmpassword = request.form['cmpassword']
+        role = request.form['role']
+        check,message=admmt.create_user(username,password,cmpassword,role)
+    return redirect(url_for('main.admin_management'))
 
-        print(' check def')
-        check,message=admmt.create_user(username,password,cmpassword,1)
+@main.route('/admin-add-role', methods=['GET', 'POST'])
+def admin_add_role():
+    if request.method == 'POST':
+        name = request.form['rolename']
+        selected_permission = request.form.getlist('permission')
+        controll_role.mapping_permission(name,selected_permission)
+    return redirect(url_for('main.admin_management'))
 
-        print('finished def ',message)
-        return 'ok da gui'
-    return 'dont ok'
+@main.route('/delete-role')
+def delete_role():
+    role_id = request.args.get('stt')
 
-
+    ret.delete_role(role_id)
+    return redirect(url_for('main.admin_management'))

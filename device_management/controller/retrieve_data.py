@@ -1,8 +1,7 @@
 import hashlib
 
 from device_management.config import page_size
-from device_management.models import ThietBi,BaoTri
-from device_management.models import User
+from device_management.models import ThietBi,BaoTri,Permission,User,Role,Role_Permission
 from device_management import db
 
 
@@ -155,3 +154,32 @@ def add_user(user,password,role):
     db.session.add(new_user)
     db.session.commit()
     return new_user
+
+def add_role(rolename):
+    new_role = Role(name=rolename)
+    db.session.add(new_role)
+    db.session.commit()
+    return new_role
+
+def get_permissions():
+    return Permission.query.all()
+
+def get_roles():
+    return Role.query.all()
+
+def mapping_role_permission(stt_role,stt_permission):
+    new_mapping = Role_Permission(role_stt=stt_role,permission_stt=stt_permission)
+
+    db.session.add(new_mapping)
+    db.session.commit()
+
+def delete_role(stt):
+    role = Role.query.filter(Role.stt == stt).first()
+    # Xóa thiết bị khỏi cơ sở dữ liệu
+    try:
+        db.session.delete(role)
+        db.session.commit()
+        return 'Đã xóa thiết bị thành công'
+    except Exception as e:
+        db.session.rollback()  # Rollback nếu có lỗi
+        return 'Xóa thiết bị thất bại'
