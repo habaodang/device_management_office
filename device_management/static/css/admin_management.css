@@ -3,18 +3,19 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     height: 100vh;
-    background-color: #1c1c1c;
-    color: #fff;
+    background-color: var(--background-body-color);
+    color: var(--text-color);
 }
 
 .sidebar {
     width: 200px;
-    background-color: #ff6600;
+    background-color:var(--header-color);
     padding: 20px;
 }
 
 .sidebar h2 {
     color: #fff;
+
 }
 
 .sidebar ul {
@@ -29,12 +30,12 @@ body {
 }
 
 .sidebar li:hover {
-    background-color: #e65c00;
+    background-color: var(--sub-header-color);
 }
 
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 50px;
     overflow-y: auto;
 }
 
@@ -56,20 +57,25 @@ input, select, button {
 
 input, select {
     width: 300px;
+    margin-bottom: 20px;
 }
 
 button {
-    background-color: #ff6600;
+    background-color: var(--button-color);
     color: #fff;
     cursor: pointer;
+    width: 180px;
+    height: 40px;
 }
 
 button:hover {
-    background-color: #e65c00;
+    background-color: var(--button-hover-color);
 }
 
 .permissions label {
     margin-right: 10px;
+    color: var(--text-header-color);
+    line-height: 50%;
 }
 
 table {
@@ -79,7 +85,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #fff;
+    border: 1px solid var(--sub-header-color);
 }
 
 th, td {
@@ -87,6 +93,20 @@ th, td {
     text-align: left;
 }
 
-.create-role, .role-list {
-    margin-bottom: 20px;
+th{
+    background-color: var(--header-color);
+}
+
+
+#manageUsers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#manageUsers table{
+    background-color: var(--table-color);
+    color: var(--text-header-color);
+    width: 80%;
 }

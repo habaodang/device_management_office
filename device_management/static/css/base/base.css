@@ -1,95 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+html{
+  width: 100vw;   /* 100% chiều rộng của viewport */
+  height: 100vh;  /* 100% chiều cao của viewport */
+}
+
 /* Cấu hình font chữ chung */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #1c1c1c;
-  color: #e0e0e0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-header-color);
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
+
+
 
 /* Thanh điều hướng */
 .navbar {
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: var(--header-color);
+  height: 70px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+
+.left_section{
+  display: flex;
+  height: 100%;
   align-items: center;
 }
 
 .navbar .logo {
   color: white;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   text-decoration: none;
+  margin: 0 80px;
+
 }
+
+.left_section nav{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  align-items: center; /* Giúp các <li> nằm giữa theo chiều dọc */
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Quan trọng: chiều cao full header */
 }
 
 .navbar li a {
-  color: white;
+   display: flex;         /* Cho phép căn giữa nội dung trong <a> */
+  align-items: center;   /* Căn giữa text theo chiều dọc */
+  height: 100%;          /* <a> chiếm hết chiều cao của header */
+  color: var(--text-header-color);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   transition: color 0.3s;
+  padding: 0 10px;
 }
 
-.navbar li a:hover {
-  color: #e76f51;
+.navbar li:hover a{
+  color: var(--change-text-color);
 }
 
 
 
 /* Footer */
 footer {
-  background-color: #333;
+  background-color: var(--header-color);
   color: white;
   text-align: center;
   padding: 20px 0;
   margin-top: auto; /* Đảm bảo footer luôn ở dưới cùng */
 }
 
-footer a {
-  color: #e76f51;
-  text-decoration: none;
-}
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Thêm kiểu cho cột QR Code */
-.device-table td {
-  vertical-align: middle;
-}
-
-.device-table .qr-container {
-  width: 50px; /* Chiều rộng mã QR */
-  height: 50px; /* Chiều cao mã QR */
-  margin: 0 auto;
-}
-
-.device-table .btn-qr {
-  padding: 5px 10px;
-  font-size: 14px;
-  background-color: #2a9d8f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.device-table .btn-qr:hover {
-  background-color: #264653;
-}
 
 /* Phần tài khoản người dùng */
 .user-account {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-right: 80px;
 }
 
 .username {
@@ -98,16 +105,17 @@ footer a:hover {
 }
 
 .btn-login {
+  width: 150px;
   padding: 8px 15px;
   font-size: 14px;
-  background-color: #e76f51;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .btn-login:hover {
-  background-color: #f4a261;
+  background-color: var(--button-hover-color);
 }

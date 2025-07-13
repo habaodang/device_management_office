@@ -1,15 +1,31 @@
-
+h2{
+  margin: 10px 0;
+  font-weight: 600;
+}
 
 /* Bảng thiết bị */
 .device-table {
-  margin: 0 20px;
-  overflow-x: auto;  /* Điều chỉnh bảng khi có tràn */
+  background-color: var(--background-body-color);
+  display: flex;
+  justify-content: center;
+
+  /*overflow-x: auto;  !* Điều chỉnh bảng khi có tràn *!*/
+}
+
+#container-table{
+  border: 1px solid white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 20px ;
+
 }
 
 .device-table table {
   width: 100%;
+  height: 80%;
   border-collapse: collapse;
-  background-color: #333;
+  background-color: var(--table-color);
 }
 
 .device-table th, .device-table td {
@@ -19,7 +35,7 @@
 }
 
 .device-table th {
-  background-color: #444;
+  background-color: var(--header-color);
   color: #fff;
 }
 
@@ -72,7 +88,7 @@
   margin-bottom: 20px;
   text-align: center;
   display: flex;
-  align-items: first;
+
 }
 
 .actions button {
@@ -86,12 +102,12 @@
 }
 
 .btn-add {
-  background-color: #e76f51;
+  background-color: var(--button-color);
   color: white;
 }
 
 .btn-add:hover{
-   background-color: #f4a261;
+   background-color: var(--button-hover-color);
 
 }
 

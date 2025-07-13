@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thêm thiết bị mới</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/add_devices.css') }}">
-</head>
-<body>
+{% extends "base/base.html" %}
+{% block title %}Quản lý Thiết Bị{% endblock %}
+  {% block css %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/add_devices.css') }}">
+  {% endblock %}
 
-  <!-- Header -->
-    <header>
-    <div class="navbar">
-      <a href="#" class="logo">DEVICE MANAGEMENT</a>
-      <nav>
-        <ul>
-          <li><a href="#">Trang chủ</a></li>
-          <li><a href="{{ url_for('main.index') }}">Quản lý thiết bị</a></li>
-          <li><a href="{{ url_for('main.repair') }}">Bảo trì</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+{% block content %}
+  <!-- Phần thông tin chi tiết thiết bị -->
+ <!-- Phần Thêm thiết bị mới -->
+  <div class="body-add-device">
 
-  <!-- Phần Thêm thiết bị mới -->
-  <main>
+
     <div class="add-device">
       <h2>Thêm thiết bị mới</h2>
 
       <!-- Form nhập thông tin thiết bị mới -->
-      <form class="add-device-form" method="POST" action="{{ url_for('main.procc_add_device') }}">
-        <label for="device-name">Tên thiết bị:</label>
+      <form class="add-device-form" method="POST" action="{{ url_for('thietbi_route.procc_add_device') }}">
+        <div class="div-form">
+        <div class="div-form-input">
+          <label for="device-name">Tên thiết bị:</label>
         <input type="text" id="device-name" name="ten_thiet_bi" placeholder="Nhập tên thiết bị" >
 
         <label for="device-code">Mã thiết bị:</label>
@@ -53,6 +40,8 @@
 
         <label for="device-original-price">Nguyên giá:</label>
         <input type="text" id="device-original-price" name="nguyen_gia" placeholder="Nhập nguyên giá" >
+        </div>
+        <div class="div-form-input">
 
         <label for="device-remaining-value">Giá trị còn lại:</label>
         <input type="text" id="device-remaining-value" name="gia_tri_con_lai" placeholder="Nhập giá trị còn lại" >
@@ -74,16 +63,12 @@
 
         <label for="device-transfer-date-other">Ngày chuyển khoa khác:</label>
         <input type="text" id="device-transfer-date-other" name="ngay_chuyen_khoa_khac" placeholder="Ngày chuyển khoa khác">
-
+        </div>
+</div>
         <button type="submit" class="btn-submit">Lưu thiết bị</button>
+
       </form>
     </div>
-  </main>
+  </div>
 
-
-    <footer>
-    <p>@copyright: LeandeWeb - version: 1.0 in 2025.</p>
-  </footer>
-
-</body>
-</html>
+{% endblock %}

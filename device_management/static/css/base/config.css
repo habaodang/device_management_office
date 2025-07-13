@@ -1,0 +1,17 @@
+:root {
+    --background-color: #ffffff;
+    --text-color:#000;
+    --text-header-color:#fff;
+    --header-color:#060c20;
+    --sub-header-color: #112157;
+    --table-color:#062639;
+    --change-text-color: #2ee3c2;
+    --background-body-color: #d7effa;
+    --button-color: #08a58c;
+    --button-2-color: #f4a261;
+    --button-3-color: #f44336;
+    --button-4-color: #4848dd;
+    --button-hover-color: rgba(14, 211, 178, 0.51);
+    --sub-background-color: #0d3231;
+    --opacity-color:rgba(255, 255, 255, 0.3)
+}

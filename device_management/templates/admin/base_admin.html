@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/config.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base_admin.css') }}">
+{% block css %}
+  {% endblock %}
+</head>
+<body>
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+        <a href="{{ url_for('admin_route.admin_management') }}"><li>Tạo Tài Khoản</li></a>
+        <a href="{{ url_for('admin_route.admin_create_role') }}"><li>Quản Lý Role</li></a>
+        <a href="{{ url_for('admin_route.delete_user') }}"><li>Quản Lý User</li></a>
+        <a href="{{ url_for('main.logout') }}"><li>Đăng xuất</li></a>
+    </ul>
+</div>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<script src="{{ url_for('static', filename='js/admin_management.js') }}"></script>
+</body>
+</html>

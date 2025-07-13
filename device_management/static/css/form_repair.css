@@ -1,84 +1,115 @@
 
 /* Phần bảo trì thiết bị */
 .maintenance {
-  margin: 20px;
-  background-color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  background-color: var(--table-color);
+  padding: 50px;
 }
 
 .maintenance h2 {
-  font-size: 24px;
+  font-size: 34px;
   margin-bottom: 20px;
+}
+
+hr{
+  width: 550px;
+  height: 2px;
+  background-color: white;
+}
+
+.maintenance .device-info{
+  display: flex;
+}
+
+.maintenance .device-info .detail-infor{
+  margin-right:70px ;
+}
+
+.container-table-repair{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-body-color);
+    align-items: center;
+    justify-content: center;
+}
+
+.container-table-repair h3{
+    color: var(--text-color);
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+.container-table-repair p{
+    color: var(--text-color);
+}
+
+.container-table-repair .maintenance-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Biểu mẫu nhập liệu cho bảo trì */
-.maintenance-form table {
-  width: 100%;
+.container-table-repair table {
+  width: 70%;
   border-collapse: collapse;
   margin-bottom: 20px;
+    background-color: var(--table-color);
 }
 
-.maintenance-form th, .maintenance-form td {
+.container-table-repair th, .container-table-repair td {
   padding: 12px;
   text-align: left;
   border: 1px solid #707070;
 }
 
-.maintenance-form th {
-  background-color: #2a9d8f;
+.container-table-repair th {
+  background-color: var(--header-color);
   color: white;
 }
 
-.maintenance-form tr:hover {
-  background-color: #231c1c;
+.container-table-repair tr:hover {
+  background-color: var(--sub-header-color);
 }
 
 /* Các ô nhập liệu */
-.maintenance-form input, .maintenance-form textarea {
+.container-table-repair input, .container-table-repair textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: var(--background-body-color);
 }
 
-.maintenance-form textarea {
+.container-table-repair textarea {
   resize: vertical;
 }
 
-/* Nút thêm bảo trì và lưu thông tin */
-.btn-add, .btn-submit {
-  background-color: #e76f51;
-  color: white;
+ .btn-submit{
+ background-color: var(--button-color);
+    color: white;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
-}
-
- .btn-submit{
- background-color: #2a9d8f;
  }
 
-.btn-add:hover {
-  background-color: #f4a261;
-}
-
 .btn-submit:hover {
-  background-color: #264653;
+  background-color: var(--button-hover-color);
 }
 
 #btn_ex,#btn_maintenance{
-    background-color: #e76f51;
+    background-color: var(--button-4-color);
   color: white;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 20px 0;
+  margin: 10px 0;
 }

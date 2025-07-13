@@ -1,15 +1,16 @@
-{% extends "paginate.html" %}
+{% extends "base/paginate.html" %}
 
 {% block title %}Quản lý Thiết Bị{% endblock %}
 {% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base/config.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 
 {% block instruction %}
-<h2>Bảng thiết bị</h2>
+<h2>Danh sách thông tin thiết bị</h2>
 <div class="actions">
-    <a href="{{ url_for('main.add_devices') }}">
+    <a href="{{ url_for('thietbi_route.add_devices') }}">
         <button class="btn-add">Thêm thiết bị mới</button>
     </a>
 </div>
@@ -50,18 +51,18 @@
                         {% else %}
                         <td> - </td>
                         {% endif %}
-                        <td><a href="{{ url_for('main.device_information', stt=device.stt) }}">
+                        <td><a href="{{ url_for('thietbi_route.device_information', stt=device.stt) }}">
                             <button class="btn-detail">Xem</button>
                         </a></td>
                         <td>
-                            <a href="{{ url_for('main.update_infor', stt=device.stt) }}">
+                            <a href="{{ url_for('thietbi_route.update_infor', stt=device.stt) }}">
                             <button class="btn-edit">Sửa</button>
                             </a>
                         </td>
-                        <td> <a href="{{ url_for('main.generate_qr', stt=device.stt) }}">
+                        <td> <a href="">
                             <button class="btn-qr" onclick="generateQRCode(1)">Tạo</button></a>
                         </td>
-                        <td> <a href="{{ url_for('main.delete_device', stt=device.stt) }}" onclick="return confirmDelete();">
+                        <td> <a href="{{ url_for('thietbi_route.delete_device', stt=device.stt) }}" onclick="return confirmDelete();">
                             <button class="btn-delete">Xóa</button>
                         </a></td>
                     </tr>
@@ -77,3 +78,4 @@
 </script>
 {% endblock %}
 
+{% block url_search %} {{ url_for('thietbi_route.main_information_page') }}{% endblock %}

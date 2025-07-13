@@ -2,18 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base/config.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_management.css') }}">
+
 </head>
 <body>
     <div class="sidebar">
@@ -29,7 +22,7 @@
         <!-- Tạo tài khoản -->
         <section id="createUser" class="section">
             <h2>Tạo Tài Khoản</h2>
-            <form method="post" action="{{ url_for('main.admin_add_user')}}">
+            <form method="post" action="{{ url_for('admin_route.admin_add_user')}}">
                 <label>Tên tài khoản:</label>
                 <input type="text" placeholder="Username" name="user_name">
 
@@ -56,15 +49,15 @@
         <section id="manageRoles" class="section">
             <h2>Quản Lý Role</h2>
             <div class="create-role">
-                <form action="{{ url_for('main.admin_add_role') }}" method="post">
+                <form action="{{ url_for('admin_route.admin_add_role') }}" method="post">
                 <h3>Tạo Role Mới</h3>
                 <input type="text" placeholder="Tên role mới" name="rolename">
-                <div class="permissions">
                     {% for permission in permissions %}
+                <div class="permissions">
                     <label><input name="permission" type="checkbox" value="{{ permission.stt }}"> {{ permission.name }}</label>
 
-                    {% endfor %}
                 </div>
+                    {% endfor %}
                 <button type="submit">Tạo Role</button>
                     </form>
             </div>
@@ -73,7 +66,7 @@
                 <h3>Danh sách Role</h3>
                 {% for role in roles %}
                 <ul>
-                    <li>{{ role.name }} <a href="{{ url_for('main.delete_role', stt = role.stt  ) }} "> <button>Xóa</button></a></li>
+                    <li>{{ role.name }} <a href="{{ url_for('admin_route.delete_role', stt = role.stt  ) }} "> <button>Xóa</button></a></li>
                 </ul>
                 {% endfor %}
             </div>
@@ -81,36 +74,36 @@
 
         <!-- Quản lý User -->
         <section id="manageUsers" class="section">
-<!--            <h2>Quản Lý User</h2>-->
-<!--            <table>-->
-<!--                <thead>-->
-<!--                    <tr>-->
-<!--                        <th>Username</th>-->
-<!--                        <th>Role</th>-->
-<!--                        <th>Hành động</th>-->
-<!--                    </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                    <tr>-->
-<!--                        <td>user1</td>-->
-<!--                        <td>Admin</td>-->
-<!--                        <td>-->
-<!--                            <button>Sửa</button>-->
-<!--                            <button>Xóa</button>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td>user2</td>-->
-<!--                        <td>User</td>-->
-<!--                        <td>-->
-<!--                            <button>Sửa</button>-->
-<!--                            <button>Xóa</button>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--        </section>-->
-    <h1>Đang bảo trì</h1>
+            <h2>Quản Lý User</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>user1</td>
+                        <td>Admin</td>
+                        <td>
+                            <button>Sửa</button>
+                            <button>Xóa</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>user2</td>
+                        <td>User</td>
+                        <td>
+                            <button>Sửa</button>
+                            <button>Xóa</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </div>
 
     <script src="{{ url_for('static', filename='js/admin_management.js') }}"></script>

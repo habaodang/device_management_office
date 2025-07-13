@@ -1,0 +1,39 @@
+{% extends "admin/base_admin.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/delete_user.css') }}">
+  {% endblock %}
+    {% block content %}
+
+<!-- Quản lý User -->
+        <section id="manageUsers" class="section">
+            <h2>Quản Lý User</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                     <tr>
+                        <td>{{user.name}}</td>
+                        <td>{{user.role.name}}</td>
+                        <td> <a href="{{ url_for('admin_route.delete_user_process', stt=user.stt) }}" onclick="return confirmDelete();">
+                            <button class="btn-delete">Xóa</button>
+                        </a></td>
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </section>
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xóa user này này?");
+    }
+</script>
+
+    {% endblock %}

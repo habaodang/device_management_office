@@ -1,10 +1,16 @@
+.paginate h2{
+  margin: 15px 0;
+}
+
 /* Phần bảo trì thiết bị */
 .maintenance {
-  margin: 20px;
-  background-color: #333;
+  background-color: var(--background-body-color);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .maintenance h2 {
@@ -43,29 +49,36 @@ h2 {
 .search-bar input {
   padding: 10px;
   font-size: 16px;
-  width: 300px;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  border-radius: 30px;
+  width: 400px;
 }
 
 .search-bar .btn-search {
   padding: 10px 20px;
-  background-color: #e76f51;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .search-bar .btn-search:hover {
-  background-color: #f4a261;
+  background-color: var(--button-hover-color);
+}
+
+.maintenance .device-selection{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .device-selection table {
-  width: 100%;
+  width: 70%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background-color: var(--table-color);
 }
 
 .device-selection th, .device-selection td {
@@ -75,7 +88,7 @@ h2 {
 }
 
 .device-selection th {
-  background-color: #444;
+  background-color:var(--header-color);
   color: white;
     border: 1px solid #707070;
 }
@@ -90,8 +103,9 @@ h2 {
 }
 
 .btn-select{
-  background-color: #2a9d8f;
+    background-color: var(--button-color);
   color: white;
   border: none;
   height: 30px;
+  width: 70px;
 }

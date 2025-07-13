@@ -7,18 +7,17 @@
     <link rel="shortcut icon" type="x-icon"
           href="https://res.cloudinary.com/dudfmzv9d/image/upload/v1734080537/logo_ufixcb.jpg">
     <title>Sign in</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/base/config.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
+
 <body>
 <section id="signin">
     <div class="container">
-        <div class="signin-container">
-            <div class="signin-form">
-                <div class="form-container">
                     <h1 class="heading">Đăng Nhập</h1>
                     <p class="paragraph">
                         Vui lòng điền thông tin để truy cập tài khoản.
@@ -48,7 +47,7 @@
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                         {% for category, message in messages %}
-                        <div id="mess_erro">{{ message }}</div>
+                        <div class="error-message">{{ message }}</div>
 
                         {% endfor %}
                         {% endif %}
@@ -58,23 +57,11 @@
                             <button type="submit" class="submit btn btn-primary">Đăng nhập</button>
                         </div>
 
-                        <div class="input-form-container">
-                            <p class="paragraph">
-
-                            </p>
-                        </div>
-
                     </form>
-                </div>
-            </div>
-            <div class="signin-image" id="signup-form">
-                <div class="img-container">
-                    <img src="{{ url_for('static', filename='img/anh_thiet_bi.jpg') }}" alt="Main Image"/>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 </body>

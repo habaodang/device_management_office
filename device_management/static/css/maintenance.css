@@ -1,0 +1,55 @@
+h2 {
+    margin: 15px 0;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.maintenance{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-body-color);
+}
+
+.maintenance .device-selection{
+    background-color: var(--table-color);
+    width: 80%;
+    padding: 30px;
+    margin: 30px;
+}
+
+#device-table{
+    width: 100%;
+
+}
+
+
+.device-selection th, .device-selection td {
+  padding: 12px;
+  text-align: left;
+
+}
+
+.device-selection th {
+  background-color:var(--header-color);
+  color: white;
+    border: 1px solid #707070;
+}
+
+.device-selection td {
+  color: white;
+    border: 1px solid #707070;
+}
+
+.device-selection tr:hover {
+  background-color: #231c1c;
+}
+
+.btn-select{
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  height: 30px;
+  width: 70px;
+}

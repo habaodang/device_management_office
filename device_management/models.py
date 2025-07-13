@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Boolean,Enum
 from sqlalchemy.orm import relationship
 from device_management import db
+from flask_login import UserMixin
 
 # Mô hình bảng ThietBi
 class ThietBi(db.Model):
@@ -44,7 +45,7 @@ class BaoTri(db.Model):
     # Mối quan hệ với bảng ThietBi
     thietbi = relationship('ThietBi', back_populates='bao_tri', lazy=True)
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     __tablename__ = 'user'
     stt = Column(Integer, autoincrement=True, primary_key=True)
     name=Column(String(255), nullable=False,unique=True)
@@ -52,6 +53,9 @@ class User(db.Model):
     role_stt = Column(Integer,ForeignKey('role.stt'), nullable=False)
 
     role=relationship('Role', back_populates='user', lazy=True)
+
+    def get_id(self):
+        return str(self.stt)
 
 class Role(db.Model):
     __tablename__ = 'role'

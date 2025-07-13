@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_login import LoginManager
 
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+
 def create_app():
     app = Flask(__name__)
 
@@ -17,6 +19,7 @@ def create_app():
     # Đăng ký Blueprint
     from device_management.routes import register_routes
 
+    login_manager.init_app(app)
 
     register_routes(app)
     # Tạo bảng (chỉ khi chạy lần đầu)

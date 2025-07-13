@@ -6,6 +6,7 @@
   <title>{% block title %}Device Management{% endblock %}</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Các trang con có thể chèn CSS riêng ở đây -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base/config.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base/base.css') }}">
   {% block css %}
   {% endblock %}
@@ -15,16 +16,18 @@
   <!-- Header Section -->
   <header>
     <div class="navbar">
+      <div class="left_section">
       <a href="#" class="logo">DEVICE MANAGEMENT</a>
       <nav>
         <ul>
-          <li><a href="{{ url_for('main.index') }}">Quản lý thiết bị</a></li>
-          <li><a href="{{ url_for('main.repair') }}">Thông tin bảo trì</a></li>
-          <li><a href="{{ url_for('main.maintenance') }}">Thiết bị đang bảo trì</a></li>
+          <li><a href="{{ url_for('thietbi_route.main_information_page') }}">Quản lý thiết bị</a></li>
+          <li><a href="{{ url_for('baotri_route.repair') }}">Thông tin bảo trì</a></li>
+          <li><a href="{{ url_for('maintenance_route.maintenance') }}">Thiết bị đang bảo trì</a></li>
         </ul>
       </nav>
+        </div>
       <div class="user-account">
-        <a href="{{ url_for('main.login') }}"><button class="btn-login">Đăng Xuất</button></a>
+        <a href="{{ url_for('main.logout') }}"><button class="btn-login">Đăng Xuất</button></a>
       </div>
     </div>
   </header>
@@ -37,7 +40,7 @@
 
   <!-- Footer Section -->
   <footer>
-    <p>@copyright: LeandeWeb - version: 1.0 in 2025.</p>
+    <p>@copyright: LeandeWeb - version: 2.0 in 2025.</p>
   </footer>
 
 </body>

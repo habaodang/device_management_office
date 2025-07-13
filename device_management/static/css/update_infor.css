@@ -3,12 +3,12 @@
     display: flex;
     justify-content: center;  /* Căn giữa toàn bộ form */
     align-items: center;
-    height: 100vh;
-    padding: 20px;
+    padding-top: 20px;
+    background-color: var(--background-body-color);
 }
 
 .device-detail {
-    background-color: #222;
+    background-color: var(--table-color);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -58,7 +58,7 @@ input[type="date"] {
     border: 1px solid #444;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: #333;
+    background-color: var(--sub-background-color);
     color: white;
     width: 100%; /* Đảm bảo input chiếm hết chiều rộng */
 }
@@ -73,7 +73,7 @@ input[type="date"]:focus {
 /* Nút "Lưu" */
 button[type="submit"] {
     padding: 12px 25px;
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -85,25 +85,10 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover-color);
 }
 
-/* Nút "Quay lại" */
-.btn-back {
-    padding: 12px 25px;
-    background-color: #f1f1f1;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    width: 48%;
-}
 
-.btn-back:hover {
-    background-color: #9f9f9f;
-}
 
 /* Các ô nhập liệu */
 input[type="text"],

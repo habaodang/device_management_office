@@ -1,44 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.paginate{
+  background-color: var(--sub-header-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .contain_search_paginate{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
 }
 
 
-/* Tiêu đề và khu vực tìm kiếm */
-h2 {
-  color: #ffffff;
-}
 
 .search-bar {
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
 .search-bar input {
-  padding: 10px;
+  padding: 15px;
   font-size: 16px;
-  width: 300px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  width: 500px;
+  border: 1px solid var(--background-body-color);
+  border-radius: 30px;
+  background-color: var(--background-body-color);
+  color: white;
 }
 
 .search-bar .btn-search {
+  width: 140px;
   padding: 10px 20px;
-  background-color: #e76f51;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-left: 10px;
 }
 
 .search-bar .btn-search:hover {
-  background-color: #f4a261;
+  background-color: var(--button-hover-color);
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
 }
 
 .page-link{
-  background-color: #656464;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 5px;
   color: white;
+  border: none;
+
 }
+

@@ -1,21 +1,18 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 {% block title %}Quản lý Thiết Bị{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base/paginate.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/repair.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/maintenance.css') }}">
 {% endblock %}
 
 {% block content %}
- <h2>Thiết bị đang bảo trì</h2>
 
   <!-- Phần Bảo trì -->
   <div class="maintenance">
-
-
+ <h2>Thiết bị đang bảo trì</h2>
     <!-- Tìm kiếm và chọn thiết bị -->
     <section class="device-selection">
-
       <table id="device-table">
         <thead>
           <tr>
@@ -41,7 +38,7 @@
                 {% else %}
                 <td> -</td>
                 {% endif %}
-              <td><a href="{{ url_for('main.form_repair', stt=device.stt) }}"><button class="btn-select"> Chọn</button></a></td>
+              <td><a href="{{ url_for('baotri_route.form_repair', stt=device.stt) }}"><button class="btn-select"> Chọn</button></a></td>
             </tr>
           {% endfor %}
         </tbody>

@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 {% block title %}Quản lý Thiết Bị{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/update_infor.css') }}">
@@ -10,7 +10,7 @@
     <div class="device-detail-container">
         <div class="device-detail">
             <h2>Thông tin thiết bị</h2>
-            <form method="POST" action="{{ url_for('main.update_infor') }}">
+            <form method="POST" action="{{ url_for('thietbi_route.update_infor') }}">
                 <div class="device-info">
                     <div class="box">
                         <input type="hidden" id="" name="stt" value="{{ device.stt }}">
@@ -80,5 +80,5 @@
     </div>
 </main>
 
-{% block url_search %} {{ url_for('main.index') }} {% endblock %}
+{% block url_search %} {{ url_for('thietbi_route.main_information_page') }} {% endblock %}
 {% endblock %}

@@ -1,8 +1,7 @@
-
 from device_management.models import User
 from device_management.models import Role
 import hashlib
-
+from device_management import login_manager
 
 #kiem tra tai khoan mat khau co chinh xac
 def check_login(user_name,password):
@@ -26,3 +25,7 @@ def check_role(stt):
         if role:
             return role.name  # trả về object Role
     return None
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
